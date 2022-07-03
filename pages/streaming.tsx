@@ -1,7 +1,46 @@
 import Head from "next/head"
 import Menu from "../components/menu"
+import TonWeb from "tonweb"
+
+async function sendTon() {
+    const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: process.env.TON_API_KEY}));
+    const SEND_TO = "kQD-Ep5DdcrrQ51walRI5ICOoKybLXeJMGaGMzjnBSiXUBwt"
+
+    const wallet = tonweb.wallet.create({address: "EQDtQvEahQNDK3fwRSUKLto315NZLWxJYhGTzV402Y-0lF2U"});
+
+    const address = await wallet.getAddress();
+
+    const nonBounceableAddress = address.toString(true, true, false);
+
+    const seqno = await wallet.methods.seqno().call();
+
+    await wallet.deploy(secretKey).send();
+    const fee = await wallet.methods.transfer({
+        secretKey,
+        toAddress: SEND_TO,
+        amount: TonWeb.utils.toNano(0.01), // 0.01 TON
+        seqno: seqno,
+        payload: 'Hello',
+        sendMode: 3,
+    }).estimateFee();
+    
+    const Cell = TonWeb.boc.Cell;
+    const cell = new Cell();
+    cell.bits.writeUint(0, 32);
+    cell.bits.writeAddress(address);
+    cell.bits.writeGrams(1);
+    console.log(cell.print()); // print cell data like Fift
+    const bocBytes = await cell.toBoc();
+    
+    const history = await tonweb.getTransactions(address);
+    
+    const balance = await tonweb.getBalance(address);
+    console.log(balance);
+    tonweb.sendBoc(bocBytes);
+}
 
 export default function Streaming() {
+   
     return (
         <div>
         <Head>
@@ -32,7 +71,7 @@ export default function Streaming() {
                             <span className="font-bold">Total Tips: </span>
                             <span className="text-2xl font-bold text-blue-400 md:tracking-wider">100 TON</span>
                         </div>
-                        <button className="my-8 w-full h-12 md:tracking-wider text-white font-bold bg-blue-400 rounded-3xl">
+                        <button onClick={sendTon} className="my-8 w-full h-12 md:tracking-wider text-white font-bold bg-blue-400 rounded-3xl">
                             TIP 1 TON
                         </button>
                     </div>
