@@ -4,39 +4,86 @@ import TonWeb from "tonweb"
 
 async function sendTon() {
     const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: process.env.TON_API_KEY}));
-    const SEND_TO = "kQD-Ep5DdcrrQ51walRI5ICOoKybLXeJMGaGMzjnBSiXUBwt"
+    const STREAMER_WALLET= "kQD-Ep5DdcrrQ51walRI5ICOoKybLXeJMGaGMzjnBSiXUBwt"
+    const FAN_WALLET = "EQDtQvEahQNDK3fwRSUKLto315NZLWxJYhGTzV402Y-0lF2U"
+    const BN = TonWeb.utils.BN;
+    const toNano = TonWeb.utils.toNano;
+    const walletFan = tonweb.wallet.create({address: FAN_WALLET});
 
-    const wallet = tonweb.wallet.create({address: "EQDtQvEahQNDK3fwRSUKLto315NZLWxJYhGTzV402Y-0lF2U"});
+    const address = await walletFan.getAddress();
 
-    const address = await wallet.getAddress();
+    const seqno = await walletFan.methods.seqno().call();
 
-    const nonBounceableAddress = address.toString(true, true, false);
+    const channelInitState = {
+        balanceStreamer: toNano('1'), // A's initial balance in Toncoins. Next A will need to make a top-up for this amount
+        balanceFan: toNano('2'), // B's initial balance in Toncoins. Next B will need to make a top-up for this amount
+        seqnoA: new BN(0), // initially 0
+        seqnoB: new BN(0)  // initially 0
+    };
 
-    const seqno = await wallet.methods.seqno().call();
+    const channelConfig = {
+        channelId: new BN(124), // Channel ID, for each new channel there must be a new ID
+        addressStreamer: STREAMER_WALLET, // A's funds will be withdrawn to this wallet address after the channel is closed
+        addressFan: FAN_WALLET, // B's funds will be withdrawn to this wallet address after the channel is closed
+        initBalanceStreamer: channelInitState.balanceStreamer,
+        initBalanceFan: channelInitState.balanceFan
+    }
 
-    await wallet.deploy(secretKey).send();
-    const fee = await wallet.methods.transfer({
-        secretKey,
-        toAddress: SEND_TO,
-        amount: TonWeb.utils.toNano(0.01), // 0.01 TON
-        seqno: seqno,
-        payload: 'Hello',
-        sendMode: 3,
-    }).estimateFee();
+    const channelA = tonweb.payments.createChannel({
+        ...channelConfig,
+        isA: true,
+        myKeyPair: keyPairA,
+        hisPublicKey: keyPairB.publicKey,
+    });
+    const channelB = tonweb.payments.createChannel({
+        ...channelConfig,
+        isA: false,
+        myKeyPair: keyPairB,
+        hisPublicKey: keyPairA.publicKey,
+    });
+    const channelAddress = await channelA.getAddress(); // address of this payment channel smart-contract in blockchain
+    console.log('channelAddress=', channelAddress.toString(true, true, true));
     
-    const Cell = TonWeb.boc.Cell;
-    const cell = new Cell();
-    cell.bits.writeUint(0, 32);
-    cell.bits.writeAddress(address);
-    cell.bits.writeGrams(1);
-    console.log(cell.print()); // print cell data like Fift
-    const bocBytes = await cell.toBoc();
-    
-    const history = await tonweb.getTransactions(address);
-    
-    const balance = await tonweb.getBalance(address);
-    console.log(balance);
-    tonweb.sendBoc(bocBytes);
+    const fromWalletFan = channelA.fromWallet({
+        wallet: walletFan,
+        secretKey: keyPairA.secretKey
+    });
+    await fromWalletFan.deploy().send(toNano('1'));
+    // To check you can use blockchain explorer https://testnet.tonscan.org/address/<CHANNEL_ADDRESS>
+    // We can also call get methods on the channel (it's free) to get its current data.
+
+    console.log(await channelA.getChannelState());
+    const data = await channelA.getData();
+
+    const channelState1 = {
+        balanceStreamer: toNano('2'),
+        balanceFan: toNano('1'),
+        seqnoA: new BN(1),
+        seqnoB: new BN(0)
+    };
+
+    // A signs this state and send signed state to B (e.g. via websocket)
+
+    const signatureA1 = await channelA.signState(channelState1);
+
+    // B checks that the state is changed according to the rules, signs this state, send signed state to A (e.g. via websocket)
+
+    if (!(await channelB.verifyState(channelState1, signatureA1))) {
+        throw new Error('Invalid A signature');
+    }
+    const signatureB1 = await channelB.signState(channelState1);
+
+    const signatureCloseB = await channelB.signClose(channelState1);
+
+    if (!(await channelA.verifyClose(channelState1, signatureCloseB))) {
+        throw new Error('Invalid B signature');
+    }
+
+    await fromWalletFan.close({
+        ...channelState1,
+        hisSignature: signatureCloseB
+    }).send(toNano('1'));
+
 }
 
 export default function Streaming() {
