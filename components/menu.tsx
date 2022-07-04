@@ -1,12 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
+import CommonButton from "./CommonButton"
 import logo from "../assets/logo.png"
 
 export default function Menu() {
     return (
-        <div className="bg-black">
+        <div className="">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+                <div className="flex items-center justify-between h-24 border-b border-blue-400/20">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 hover:cursor-pointer">
                             <Link href={"/"}>
@@ -15,7 +16,9 @@ export default function Menu() {
                         </div>
                     </div>
                     <div>
-                        <button className="bg-blue-400 px-8 p-2 text-white rounded-3xl">Connect</button>
+                        <button>
+                            <CommonButton title={"Connect"} />
+                        </button>
                     </div>
                 </div>
             </div>
