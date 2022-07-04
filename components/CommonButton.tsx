@@ -1,4 +1,4 @@
-export default function CommonButton({title}) {
+export default function CommonButton({title}: {title: string}) {
     return (
         <div className="group relative w-full">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-100 to-blue-400 rounded-lg opacity-30 blur transition duration-1000 group-hover:opacity-100"></div>
