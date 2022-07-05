@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Menu from '../components/menu'
-import HomeHeader from '../components/home-header'
-import ActiveStreaming from '../components/active-streaming'
+import HomeHeader from '../components/HomeHeader'
+import ActiveStreaming from '../components/ActiveStreaming'
 
 
 const Home: NextPage = () => {
