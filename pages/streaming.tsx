@@ -39,7 +39,7 @@ export default function Streaming() {
                                     <span className="text-lg font-extralight">Total Tips: </span>
                                     <span className="text-lg font-bold text-blue-400 md:tracking-wider">100 TON</span>
                                 </div>
-                                <button onClick={sendTon} className="my-8 w-full h-12 md:tracking-wider text-white font-bold bg-blue-400 rounded-3xl">
+                                <button onClick={sendTon} className="my-8 w-full md:tracking-wider text-white font-bold bg-blue-400 rounded-3xl">
                                     <CommonButton title={"TIP 1 TON"} />
                                 </button>
                             </div>
