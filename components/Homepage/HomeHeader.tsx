@@ -1,5 +1,5 @@
 import Image from "next/image"
-import duck from '../assets/duck.png'
+import duck from '../../assets/duck.png'
 
 
 export default function HomeHeader() {

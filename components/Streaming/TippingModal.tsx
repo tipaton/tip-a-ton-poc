@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { XCircleIcon } from "@heroicons/react/outline";
 import { useQRCode } from "next-qrcode";
-import CommonButton from "./CommonButton";
+import CommonButton from "../CommonButton";
 
 export default function TippingModal() {
     const { Canvas } = useQRCode();

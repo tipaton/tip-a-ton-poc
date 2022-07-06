@@ -3,8 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import CommonButton from "./CommonButton"
 import logo from "../assets/logo.png"
-import LoginModal from "./LoginModal";
-import TippingModal from "./TippingModal";
 
 
 export default function Menu() {

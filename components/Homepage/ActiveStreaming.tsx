@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import SmallLogo from '../assets/small_logo.png'
-import SampleML from '../assets/sampleml.png'
-import SampleML2 from '../assets/sampleml2.png'
-import SampleML3 from '../assets/sampleml3.png'
+import SmallLogo from '../../assets/small_logo.png'
+import SampleML from '../../assets/sampleml.png'
+import SampleML2 from '../../assets/sampleml2.png'
+import SampleML3 from '../../assets/sampleml3.png'
 
 
 export default function ActiveStreaming() {
