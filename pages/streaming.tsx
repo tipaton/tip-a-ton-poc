@@ -11,7 +11,7 @@ export default function Streaming() {
         <div className="min-h-full bg-black">
             <div className="bg-gradient-to-tr from-blue-400/5 to-slate-900/5">
                 <div className="max-w-7xl min-h-screen mx-auto py-6 sm:px-6 lg:px-8">
-                    <div className="px-8 py-6 sm:px-0">
+                    <div className="px-6 py-6 sm:px-0">
                         <h1 className="text-3xl md:text-5xl text-white font-bold">Mobile Legend: Bang Bang</h1>
                         <div className="flex-col space-y-8 md:space-y-0 py-8 md:grid md:grid-cols-3 md:gap-8 lg:gap-16">
                             <div className="w-full md:col-span-2">
