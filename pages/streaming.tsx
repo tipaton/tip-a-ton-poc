@@ -1,6 +1,7 @@
 import Image from "next/image"
 import CommonButton from "../components/CommonButton"
 import SmallLogo from "../assets/small_logo.png"
+import Link from "next/link"
 
 async function sendTon() {
     console.log("Sending TON")
@@ -24,7 +25,9 @@ export default function Streaming() {
                             </div>
                             <div className="md:col-span-1">
                                 <div className="flex-col text-white">
-                                    <h2 className="font-poppins text-3xl font-bold md:text-4xl mb-4">Jess No Limit</h2>
+                                    <Link href={"/streamers/jessnolimit"}>
+                                        <h2 className="font-poppins text-3xl font-bold md:text-4xl mb-4">Jess No Limit</h2>
+                                    </Link>
                                     <span className="text-white/75">Trying to play Odette! Come and support me to get all the nice skins</span>
                                 </div>
                                 <div className="flex align-center justify-between text-white my-8 space-x-4">
