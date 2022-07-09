@@ -1,4 +1,9 @@
-export default function CommonButton({title, className}: {title: string, className: string}) {
+interface ButtonProps {
+    title: string,
+    className?: string
+}
+
+export default function CommonButton({title, className}: ButtonProps) {
     return (
         <div className={className + " group relative w-full"}>
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-100 to-blue-400 rounded-lg opacity-30 blur transition duration-1000 group-hover:opacity-100"></div>
