@@ -8,7 +8,7 @@ export default function TippingModal() {
     return (
         <div className="bg-white opacity-80 p-8 z-10">
             <div className="flex h-screen justify-center items-center">
-                <div className="bg-slate-700 p-4 rounded-lg">
+                <div className="bg-slate-700 p-4 rounded-lg shadow-xl">
                     <div className="flex justify-end">
                         <button className="hover:cursor-pointer">
                             <XCircleIcon className=" text-white h-10 w-10"/>
