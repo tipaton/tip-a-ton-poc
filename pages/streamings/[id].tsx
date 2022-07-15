@@ -1,6 +1,6 @@
 import Image from "next/image"
 import CommonButton from "../../components/CommonButton"
-import SmallLogo from "../assets/small_logo.png"
+import SmallLogo from "../../assets/small_logo.png"
 import Link from "next/link"
 
 async function sendTon() {
