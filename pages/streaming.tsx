@@ -26,7 +26,7 @@ export default function Streaming() {
                             <div className="md:col-span-1">
                                 <div className="flex-col text-white">
                                     <Link href={"/streamers/jessnolimit"}>
-                                        <h2 className="font-poppins text-3xl font-bold md:text-4xl mb-4">Jess No Limit</h2>
+                                        <h2 className="font-poppins text-3xl font-bold md:text-4xl mb-4 hover:cursor-pointer hover:underline">Jess No Limit</h2>
                                     </Link>
                                     <span className="text-white/75">Trying to play Odette! Come and support me to get all the nice skins</span>
                                 </div>
