@@ -11,7 +11,7 @@ export default function StreamingsList() {
             </div>
             <div className="mt-6 px-4 grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 <div className="group relative">
-                    <Link href={"/streaming"}>
+                    <Link href={"/streamings/123456"}>
                         <div className="shadow-lg overflow-hidden transition duration-200 ease-in transform md:hover:scale-105 hover:z-50">
                             <div className="w-full h-full bg-black object-center object-cover rounded-lg overflow-hidden shadow-lg hover:cursor-pointer">
                                 <Image src={SampleML2} alt="Mobile Legend Streaming" layout="responsive" className='rounded-t-lg'/>
@@ -29,7 +29,7 @@ export default function StreamingsList() {
                     </Link>
                 </div>
                 <div className="group relative">
-                    <Link href={"/streaming"}>
+                    <Link href={"/streaming/123456"}>
                         <div className="shadow-lg overflow-hidden transition duration-200 ease-in transform md:hover:scale-105 hover:z-50">
                             <div className="w-full h-full bg-black object-center object-cover rounded-lg overflow-hidden shadow-lg hover:cursor-pointer">
                                 <Image src={SampleML2} alt="Mobile Legend Streaming" layout="responsive" className='rounded-t-lg'/>

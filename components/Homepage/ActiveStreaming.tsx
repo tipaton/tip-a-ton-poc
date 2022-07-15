@@ -15,7 +15,7 @@ export default function ActiveStreaming() {
                 <h2 className='text-2xl md:text-3xl font-bold text-white tracking-wide'>
                   Now Streaming
                 </h2>
-                <Link href={"/streamings"}>
+                <Link href={"/streamings/jessnolimit"}>
                   <div className="inline-flex items-center group">
                     
                       <span className="text-white group-hover:cursor-pointer group-hover:text-blue-400">See all</span>
@@ -27,7 +27,7 @@ export default function ActiveStreaming() {
               </div>
               
               <div className='py-8 space-y-8 sm:space-y-0 sm:grid md:grid-cols-2 sm:gap-4 md:gap-8 lg:grid-cols-3'>
-                <Link href={"/streaming"}>
+                <Link href={"/streamings/jessnolimit"}>
                   <div className="max-w-md shadow-lg transition duration-200 ease-in transform md:hover:scale-105 hover:z-50">
                     <div className="bg-black max-w-md rounded-lg overflow-hidden shadow-lg sm:max-w-sm hover:cursor-pointer ">
                       <Image src={SampleML} alt="Mobile Legend Streaming" layout="responsive" className='rounded-t-lg'/>
@@ -44,7 +44,7 @@ export default function ActiveStreaming() {
                     </div>
                   </div>
                 </Link>
-                <Link href={"/streaming"}>
+                <Link href={"/streamings/jessnolimit"}>
                   <div className="max-w-md shadow-lg transition duration-200 ease-in transform md:hover:scale-105 hover:z-50">
                     <div className="bg-black max-w-md rounded-lg overflow-hidden shadow-lg sm:max-w-sm hover:cursor-pointer">
                         <Image src={SampleML2} alt="Mobile Legend Streaming" layout="responsive" className='rounded-t-lg'/>
