@@ -62,12 +62,10 @@ export default function Menu() {
                                         </div> 
                                     )
                                 }
-                                
-                                
                             </div>
                             {
                                 isMenuOpen && (
-                                    <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-lg shadow-sm bg-slate-700 ring-white ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex={-1}>
+                                    <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-lg shadow-lg bg-slate-700 ring-white ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex={-1}>
                                         <div className="py-1 flex-col" role="none">
                                             <div className="hover:bg-blue-400 hover:cursor-pointer">
                                                 <Link href={"/"} role="menuitem" tabIndex={-1}>

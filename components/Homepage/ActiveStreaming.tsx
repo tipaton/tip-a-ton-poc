@@ -15,17 +15,13 @@ export default function ActiveStreaming() {
                 <h2 className='text-2xl md:text-3xl font-bold text-white tracking-wide'>
                   Now Streaming
                 </h2>
-                <Link href={"/streamings/jessnolimit"}>
+                <Link href={"/streamings"}>
                   <div className="inline-flex items-center group">
-                    
                       <span className="text-white group-hover:cursor-pointer group-hover:text-blue-400">See all</span>
                       <ArrowNarrowRightIcon className="block-inline text-white group-hover:cursor-pointer group-hover:text-blue-400 mx-2" width={20} height={20}/>
-                    
                   </div>
                 </Link>
-                
               </div>
-              
               <div className='py-8 space-y-8 sm:space-y-0 sm:grid md:grid-cols-2 sm:gap-4 md:gap-8 lg:grid-cols-3'>
                 <Link href={"/streamings/jessnolimit"}>
                   <div className="max-w-md shadow-lg transition duration-200 ease-in transform md:hover:scale-105 hover:z-50">
@@ -74,6 +70,19 @@ export default function ActiveStreaming() {
                           </div>
                         </div>
                     </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="mt-6">
+              <div className="flex flex-row justify-between">
+                <h2 className='text-2xl md:text-3xl font-bold text-white tracking-wide'>
+                  Top Streamers
+                </h2>
+                <Link href={"/streamers"}>
+                  <div className="inline-flex items-center group">
+                      <span className="text-white group-hover:cursor-pointer group-hover:text-blue-400">See all</span>
+                      <ArrowNarrowRightIcon className="block-inline text-white group-hover:cursor-pointer group-hover:text-blue-400 mx-2" width={20} height={20}/>
                   </div>
                 </Link>
               </div>
