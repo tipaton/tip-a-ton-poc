@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 type User = {
     account: string,
@@ -12,22 +12,25 @@ interface AuthProps {
 }
 
 export const AuthContext = createContext<AuthProps>({
-    user: {
-        account: "",
-        username: ""
-    },
-    setUser: () => null,
-    isLoggedIn: false,
-    setIsLoggedIn: () => false
-})
+  user: {
+    account: '',
+    username: '',
+  },
+  setUser: () => null,
+  isLoggedIn: false,
+  setIsLoggedIn: () => false,
+});
 
-export const AuthContextProvider = ({ children }: { children: any}) => {
-    const [ user, setUser ] = useState({account: "EQx...9s", username: ""});
-    const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+export function AuthContextProvider({ children }: { children: any}) {
+  const [user, setUser] = useState({ account: 'EQx...9s', username: '' });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    return (
-        <AuthContext.Provider value={{user, setUser, isLoggedIn, setIsLoggedIn}}>
-            { children }
-        </AuthContext.Provider>
-    )
+  return (
+    <AuthContext.Provider value={{
+      user, setUser, isLoggedIn, setIsLoggedIn,
+    }}
+    >
+      { children }
+    </AuthContext.Provider>
+  );
 }

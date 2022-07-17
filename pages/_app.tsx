@@ -1,8 +1,8 @@
-import '../styles/globals.css'
-import Head from 'next/head'
-import type { AppProps } from 'next/app'
-import Menu from '../components/Navbar'
-import { AuthContextProvider } from '../contexts/AuthContext'
+import '../styles/globals.css';
+import Head from 'next/head';
+import type { AppProps } from 'next/app';
+import Menu from '../components/Navbar';
+import { AuthContextProvider } from '../contexts/AuthContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,8 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         </div>
       </div>
     </div>
-    
-  )
+
+  );
 }
 
-export default MyApp
+export default MyApp;
