@@ -2,6 +2,8 @@ import { useContext, useEffect } from 'react';
 import HomeHeader from '../components/Homepage/HomeHeader';
 import ActiveStreaming from '../components/Homepage/ActiveStreaming';
 import { AuthContext } from '../contexts/AuthContext';
+import HotGamers from '../components/Homepage/HotGamers';
+import NftGallery from '../components/Homepage/NftGallery';
 
 function Home() {
   const user = useContext(AuthContext);
@@ -14,6 +16,8 @@ function Home() {
     <div className="min-h-screen py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
       <HomeHeader />
       <ActiveStreaming />
+      <HotGamers />
+      <NftGallery />
     </div>
   );
 }
