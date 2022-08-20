@@ -8,7 +8,7 @@ import nft4 from '../../assets/nft4.png';
 
 export default function NftGallery() {
     return (
-        <div className="mt-12">
+        <div className="px-6 py-6 mt-6 sm:px-0">
             <div className="flex flex-row justify-between">
                 <h2 className="text-2xl font-bold tracking-wide text-white md:text-3xl">
                     Trending NFTs

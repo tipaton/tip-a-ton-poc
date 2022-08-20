@@ -7,7 +7,7 @@ import sample3 from '../../assets/sampleml3.png';
 
 export default function HotGamers() {
   return (
-    <div className="mt-6 mb-6">
+    <div className="px-6 py-6 mt-6 sm:px-0">
       <div className="flex flex-row justify-between">
         <h2 className="text-2xl font-bold tracking-wide text-white md:text-3xl">
           Top Streamers
